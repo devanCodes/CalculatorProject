@@ -1,0 +1,79 @@
+/* selecting all of the elements in HTML file */
+*, *::before, *::after {
+    box-sizing: border-box;
+    /* adding a default font, sans-serif */
+    font-family: Verdana, sans-serif;
+    font-weight: normal;
+}
+
+/* styling the background */
+body {
+    /* removing padding and margin so that background fills entire screen */
+    padding: 0;
+    margin: 0;
+    /* adding linear gradient to allow background color to change gradually when viewing left-to-right */
+    background: linear-gradient(to right, #00BFFF, #7B68EE);
+}
+
+/* styling the calculator grid */
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    /* setting minimum height to center buttons vertically (each button fills 100% of the height all of the time */
+    min-height: 100vh;
+    /* organizing layout of calculator */
+    grid-template-columns: repeat(4, 100px);
+    /* adding a minmax with auto function in the rows so this will allow the user to input a number with as many 
+    digits as they want in the calculator */
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+}
+
+/* properly positioning buttons */
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    /* using 75% opaque */
+    background-color: rgba(255, 255, 255, .75);
+}
+
+/* button hover effect */
+.calculator-grid > button:hover {
+    /* changing opaque to 90% to allow slight effect when hovering over a button */
+    background-color: rgba(255, 255, 255, .9);
+}
+
+/* changing AC and = buttons to fill two spaces horizontally */
+.span-two {
+    grid-column: span 2;
+}
+
+.output {
+    /* columns 1 to -1 allows us to go from the first to last column */
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, .75);
+    /* flex display as inputs can range widely */
+    display: flex;
+    /* wanting out items to be on the right side of the output box */
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    /* adding padding so output is not on the edge of output box */
+    padding: 10px;
+    /* allows output text to wrap if too long */
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+}
+
+/* making clear disctinctions between previous and current outputs */
+.output .current-operand {
+    color: white;
+    font-size: 2.5rem;
+}
